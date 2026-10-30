@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Read(//Applications/**)",
-      "Read(//Users/akshayan/Library/Java/**)",
-      "Read(//opt/homebrew/opt/**)"
-    ]
-  }
-}

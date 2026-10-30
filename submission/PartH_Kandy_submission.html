@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CMM705 Part H — Kandy branch challenge</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm; }
+  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 10.5pt;
+         line-height: 1.45; color: #1d1d1f; max-width: 820px; margin: 24px auto; padding: 0 16px; }
+  h1 { font-size: 17pt; margin: 0 0 2px; color: #134a8e; }
+  h2 { font-size: 13pt; margin: 26px 0 8px; padding-bottom: 3px; border-bottom: 2px solid #2a78d6; color: #134a8e;
+       break-after: avoid; }
+  h3 { font-size: 10.5pt; margin: 14px 0 4px; break-after: avoid; }
+  .meta { color: #555; font-size: 9.5pt; margin-bottom: 4px; }
+  .verdict { background: #eef5ec; border-left: 4px solid #1baf7a; padding: 8px 12px; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 6px 0; break-inside: avoid; }
+  th, td { border: 1px solid #c9d3df; padding: 4px 6px; vertical-align: top; }
+  th { background: #e8f0fa; text-align: left; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.key td { background: #fff8e1; font-weight: 600; }
+  td.k { background: #f3f8ff; }
+  code, pre { font-family: Menlo, Consolas, monospace; font-size: 8.6pt; }
+  td code { white-space: pre-wrap; word-break: break-word; }
+  pre { background: #f5f6f8; border: 1px solid #dde1e6; padding: 6px 8px; white-space: pre-wrap; margin: 4px 0; }
+  .win1 { color: #b5451b; font-weight: 600; white-space: nowrap; }
+  .win2 { color: #1f5fae; font-weight: 600; white-space: nowrap; }
+  .win3 { color: #2c7a35; font-weight: 600; white-space: nowrap; }
+  .cq   { color: #6b3fb0; font-weight: 600; white-space: nowrap; }
+  .note { font-size: 8.8pt; color: #555; }
+  figure { margin: 10px 0 16px; break-inside: avoid; }
+  figure img { max-width: 100%; border: 1px solid #c9d3df; }
+  figcaption { font-size: 9pt; color: #444; margin-top: 3px; }
+  .missing { border: 2px dashed #e0a100; background: #fffaf0; padding: 18px; color: #8a6100; font-size: 9.5pt; }
+  ol.recs li { margin-bottom: 7px; }
+</style>
+</head>
+<body>
+
+<h1>Part H — A new branch opens in Kandy</h1>
+<div class="meta">CMM705 Big Data Programming · Weeks 1–5 integrated practical · Lanka Fresh Retail (fictional, synthetic data)</div>
+<div class="meta">Student: <b>[Your name]</b> · Student ID: <b>[Your ID]</b> · Date: <b>[date]</b></div>
+
+<div class="verdict"><b>Verdict:</b> on its first week Kandy is a success. Its raw total (LKR 114,190) is only 9% of
+Colombo's, but measured fairly it earns <b>LKR 16,313 per trading day</b>: 139% of Colombo and 2.9× the average
+existing branch. It is the highest of all nine branches. The evidence is one opening week, so it should be re-checked
+after a month.</div>
+
+<!-- ============================================================ 1 -->
+<h2>1. Screenshots</h2>
+
+<figure>
+  <img src="screenshots/a_hdfs.png" alt="(a) HDFS listing" onerror="this.outerHTML='<div class=missing>Screenshot (a) missing: save it as submission/screenshots/a_hdfs.png</div>'">
+  <figcaption><b>(a)</b> HDFS listing of <code>/user/retail/input</code>: <code>kandy_sales.csv</code> (9,620 bytes) next to
+  <code>sales_transactions.csv</code>, both with replication factor 2.</figcaption>
+</figure>
+
+<figure>
+  <img src="screenshots/b_mapreduce.png" alt="(b) MapReduce output for Kandy" onerror="this.outerHTML='<div class=missing>Screenshot (b) missing: save it as submission/screenshots/b_mapreduce.png</div>'">
+  <figcaption><b>(b)</b> SalesSummary output lines for Kandy: <code>branch,Kandy,100,179,114190</code> plus the seven new
+  <code>date,2026-05-0x</code> lines, all of which are Kandy sales. The job read 2 input files: Map input records = 4,102, ValidRecords = 4,100,
+  154 output lines (146 before, plus 1 branch and 7 dates).</figcaption>
+</figure>
+
+<figure>
+  <img src="screenshots/c_cqlsh.png" alt="(c) cqlsh query on sales_by_branch" onerror="this.outerHTML='<div class=missing>Screenshot (c) missing: save it as submission/screenshots/c_cqlsh.png</div>'">
+  <figcaption><b>(c)</b> cqlsh query on <code>sales_by_branch</code>, the table whose partition key is <code>branch</code>.
+  All Kandy sales sit in one partition, newest first, and <code>COUNT(*)</code> returns 100 without an ALLOW FILTERING warning.</figcaption>
+</figure>
+
+<figure>
+  <img src="screenshots/d1_dashboard_live.png" alt="(d) dashboard live view with Kandy" onerror="this.outerHTML='<div class=missing>Screenshot (d) part 1 missing: save it as submission/screenshots/d1_dashboard_live.png</div>'">
+  <figcaption><b>(d-1)</b> Live view: Kandy appears in the branch filter and the revenue-by-branch chart; totals are 4,100 transactions and LKR 4.76 M.</figcaption>
+</figure>
+
+<figure>
+  <img src="screenshots/d2_dashboard_batch.png" alt="(d) dashboard batch view up to date" onerror="this.outerHTML='<div class=missing>Screenshot (d) part 2 missing: save it as submission/screenshots/d2_dashboard_batch.png</div>'">
+  <figcaption><b>(d-2)</b> Batch view (MapReduce) is green: 4,100 live sales, 4,100 processed by MapReduce,
+  0 waiting. Live and batch totals are identical (LKR 4,759,160).</figcaption>
+</figure>
+
+<!-- ============================================================ 2 -->
+<h2>2. Commands run, in order</h2>
+<p class="note">Window 1 = host terminal in <code>~/…/retail-bigdata-lab</code> with <code>.venv</code> active ·
+Window 2 = shell inside the namenode container (<code>docker exec -it namenode bash</code>) ·
+cqlsh = Window 1 after <code>docker exec -it cassandra cqlsh</code> · Window 3 = dashboard.
+Parts B–E (cluster, original 4,000 sales in HDFS and Cassandra, jar built) were completed beforehand.
+Run on macOS (Apple Silicon) with the Colima Docker runtime; every command is the same as on WSL.</p>
+
+<table>
+<tr><th>#</th><th>Window</th><th>Command</th><th>Result / purpose</th></tr>
+<tr><td>1</td><td class="win1">Window 1</td><td><code>python3 scripts/generate_sales.py --count 100 --branch Kandy --days 7 --out data/kandy_sales.csv</code></td>
+    <td>100 rows, T004001–T004100, 1–7 May 2026, LKR 114,190 (Task 1)</td></tr>
+<tr><td>2</td><td class="win2">Window 2</td><td><code>hdfs dfs -put /opt/retail/data/kandy_sales.csv /user/retail/input/</code></td>
+    <td>Add the new file to HDFS next to the old one (Task 2)</td></tr>
+<tr><td>3</td><td class="win2">Window 2</td><td><code>hdfs dfs -ls /user/retail/input</code></td><td>2 files → screenshot (a)</td></tr>
+<tr><td>4</td><td class="win2">Window 2</td><td><code>hdfs dfs -rm -r /user/retail/output/sales_summary</code></td>
+    <td>Hadoop never overwrites an output directory</td></tr>
+<tr><td>5</td><td class="win2">Window 2</td><td><code>yarn jar /opt/retail/mapreduce/target/retail-analytics-1.0.jar org.iit.retail.SalesSummary /user/retail/input /user/retail/output/sales_summary</code></td>
+    <td>Re-run the batch layer over both files: 2 input files, ValidRecords = 4,100 (Task 3)</td></tr>
+<tr><td>6</td><td class="win2">Window 2</td><td><code>hdfs dfs -cat /user/retail/output/sales_summary/part-r-00000 | grep -E 'Kandy|^date,2026-05'</code></td>
+    <td>Kandy output lines → screenshot (b)</td></tr>
+<tr><td>7</td><td class="win2">Window 2</td><td><code>hdfs dfs -cat /user/retail/output/sales_summary/part-r-* &gt; /opt/retail/results/sales_summary.csv</code></td>
+    <td>Copy the result out of HDFS (154 lines)</td></tr>
+<tr><td>8</td><td class="win1">Window 1</td><td><code>docker exec -it cassandra cqlsh -f /opt/retail/cassandra/load_summary.cql</code></td>
+    <td>Batch view: TRUNCATE and reload <code>sales_summary</code>, 154 rows (Task 4a)</td></tr>
+<tr><td>9</td><td class="win1">Window 1</td><td><code>docker exec -it cassandra cqlsh -f /opt/retail/cassandra/load_kandy.cql</code></td>
+    <td>Live data: 100 rows into <code>transactions</code> and 100 into <code>sales_by_branch</code> (Task 4b; file shown below)</td></tr>
+<tr><td>10</td><td class="win1">Window 1</td><td><code>docker exec -it cassandra cqlsh</code></td><td>Open cqlsh</td></tr>
+<tr><td>11</td><td class="cq">cqlsh</td><td><code>USE retail_analytics;</code></td><td></td></tr>
+<tr><td>12</td><td class="cq">cqlsh</td><td><code>SELECT txn_date, transaction_id, product_name, quantity, total_amount, payment_method FROM sales_by_branch WHERE branch = 'Kandy' LIMIT 10;</code></td>
+    <td>Kandy partition, newest first → screenshot (c)</td></tr>
+<tr><td>13</td><td class="cq">cqlsh</td><td><code>SELECT COUNT(*) FROM sales_by_branch WHERE branch = 'Kandy';</code></td><td>100: matches MapReduce</td></tr>
+<tr><td>14</td><td class="cq">cqlsh</td><td><code>SELECT * FROM sales_summary WHERE dimension = 'branch';</code></td><td>9 branches incl. <code>Kandy | 179 | 114190 | 100</code></td></tr>
+<tr><td>15</td><td class="cq">cqlsh</td><td><code>EXIT;</code></td><td></td></tr>
+<tr><td>16</td><td class="win3">Window 3</td><td><code>streamlit run dashboard/app.py --server.headless true</code></td>
+    <td>Open http://localhost:8501; Live view and Batch view tabs → screenshots (d) (Task 5)</td></tr>
+</table>
+
+<h3>New file <code>cassandra/load_kandy.cql</code> (used in command 9)</h3>
+<p class="note">The supplied <code>load_transactions.cql</code> only reads <code>sales_transactions.csv</code>, so the Kandy rows must be
+copied into <b>both</b> denormalised sales tables. Cassandra does not keep the two tables in step on its own (Part D17).</p>
+<pre>USE retail_analytics;
+COPY transactions (transaction_id, txn_date, txn_time, branch, product_id, product_name,
+                   category, quantity, unit_price, total_amount, customer_id, payment_method)
+FROM '/opt/retail/data/kandy_sales.csv' WITH HEADER = TRUE;
+COPY sales_by_branch (transaction_id, txn_date, txn_time, branch, product_id, product_name,
+                      category, quantity, unit_price, total_amount, customer_id, payment_method)
+FROM '/opt/retail/data/kandy_sales.csv' WITH HEADER = TRUE;</pre>
+
+<!-- ============================================================ 3 -->
+<h2>3. Comparison table — Kandy vs existing branches</h2>
+<table>
+<tr><th>Metric</th><th>Kandy</th><th>Colombo<br><span class="note">(best)</span></th><th>Galle<br><span class="note">(2nd)</span></th>
+    <th>Matara<br><span class="note">(weakest)</span></th><th>Average of 8 existing branches</th></tr>
+<tr><td>Period used</td><td class="k">1–7 May (7 days)</td><td colspan="4">74 normal trading days*</td></tr>
+<tr><td>Total revenue as recorded, LKR <span class="note">(not comparable)</span></td><td class="num k">114,190<br><span class="note">7 days</span></td>
+    <td class="num">1,224,510<br><span class="note">89 days</span></td><td class="num">615,640</td><td class="num">407,750</td><td class="num">580,621</td></tr>
+<tr class="key"><td>Revenue per trading day, LKR</td><td class="num">16,313</td><td class="num">11,761</td><td class="num">6,203</td><td class="num">4,065</td><td class="num">5,650</td></tr>
+<tr><td>Revenue in one 7-day week, LKR†</td><td class="num k">114,190</td><td class="num">70,840</td><td class="num">29,630</td><td class="num">24,570</td><td class="num">31,661</td></tr>
+<tr class="key"><td>Sales (transactions) per trading day</td><td class="num">14.3</td><td class="num">9.4</td><td class="num">5.3</td><td class="num">3.8</td><td class="num">5.0</td></tr>
+<tr><td>Average basket, LKR per sale</td><td class="num k">1,142</td><td class="num">1,247</td><td class="num">1,177</td><td class="num">1,082</td><td class="num">1,138</td></tr>
+<tr><td>Items per sale</td><td class="num k">1.8</td><td class="num">1.8</td><td class="num">1.9</td><td class="num">1.8</td><td class="num">1.8</td></tr>
+<tr><td>Non-cash payments (card + wallet)‡</td><td class="num k">73.0%</td><td class="num">79.7%</td><td class="num">54.2%</td><td class="num">58.8%</td><td class="num">60.6%</td></tr>
+<tr><td>Electronics share of revenue</td><td class="num k">8.8%</td><td class="num">22.9%</td><td class="num">19.3%</td><td class="num">6.7%</td><td class="num">15.0%</td></tr>
+<tr><td>Beverages share of revenue</td><td class="num k">30.4%</td><td class="num">17.8%</td><td class="num">12.2%</td><td class="num">11.7%</td><td class="num">15.3%</td></tr>
+<tr><td>Rank by revenue per trading day (of 9)</td><td class="num k">1</td><td class="num">2</td><td class="num">3</td><td class="num">8</td><td class="num">–</td></tr>
+</table>
+<p class="note">* Normal days = 1 Feb – 31 Mar and 16 – 30 Apr 2026. The Avurudu peak (1–13 Apr) and holiday dip (14–15 Apr) are excluded.
+† Existing branches: 24–30 Apr, the most recent normal week, which like Kandy's week (Fri 1 – Thu 7 May) has two weekend days.
+‡ Existing branches: 16–30 Apr, because mobile-wallet use rises every month.
+Sources: <code>data/sales_transactions.csv</code> and <code>data/kandy_sales.csv</code>; Kandy totals reconcile exactly with the MapReduce
+line <code>branch,Kandy,100,179,114190</code> and with Cassandra (4,100 rows, LKR 4,759,160).</p>
+
+<!-- ============================================================ 4 -->
+<h2>4. Why total revenue is a misleading comparison, and how I corrected for it</h2>
+<p>Comparing Kandy's total revenue (LKR 114,190) with Colombo's (LKR 1,224,510) suggests Kandy earns only 9% of Colombo's
+sales. The two totals measure very different things. Colombo's figure covers 89 trading days and Kandy's covers 7, its
+opening week. Colombo's period also includes the Avurudu shopping season: across the chain, 28% of all revenue fell in
+1–15 April (17% of the days), and Colombo's daily revenue in that window (LKR 23,614) was double its normal level
+(LKR 11,761). Kandy's week has no festival. I corrected for this in three ways. First, I normalised by time, using revenue and sales
+<i>per trading day</i>. Second, for the existing branches I used only the 74 normal days, leaving out 1–15 April. Third, I
+cross-checked with a same-length window, the last full week of April, which has the same number of weekend days. I also used per-sale metrics (average basket,
+items per sale) that do not depend on period length, and compared payment mix with late April because wallet use grows monthly.
+After correction Kandy earns LKR 16,313 a day: 139% of Colombo and 2.9× the average branch. One limitation remains. This is a
+single opening week of 100 sales, and new-store novelty probably inflates it: 86 of the 100 sales came from newly registered
+loyalty customers, and no cost or floor-space data is available to judge profit.</p>
+
+<!-- ============================================================ 5 -->
+<h2>5. Business recommendations</h2>
+<ol class="recs">
+  <li><b>Run Kandy as a top-tier store, not a small new branch.</b> It averages 14.3 sales a day, more than Colombo
+  (9.4) and almost three times the average branch (5.0). Weekends were busiest (LKR 19,375 a day against 15,088 on weekdays,
+  +28%), so roster extra till staff on Saturdays and Sundays and plan stock replenishment at Colombo's level. Re-check after four
+  weeks, because only 7 of Kandy's 93 customers returned within the first week.</li>
+  <li><b>Build the range around beverages, especially tea.</b> Beverages earned 30.4% of Kandy's revenue, double the chain
+  average (15.3%). Ceylon Black Tea 400g was its best seller: 19 units in 7 days, about 2.7 a day, against 0.4 a day in a
+  typical existing branch. Increase tea and beverage shelf space and safety stock, and run a local tea promotion to grow baskets.</li>
+  <li><b>Bring in Colombo's electronics range with card and wallet offers.</b> Electronics is only 8.8% of Kandy's revenue
+  against 22.9% in Colombo, and no kettles, rice cookers or speakers were sold. Yet Kandy shoppers pay like Colombo's: 73%
+  non-cash, against a chain average of 61%. Big-ticket electronics with card or wallet instalment deals is the clearest way to lift
+  Kandy's average basket (LKR 1,142) towards Colombo's (LKR 1,247).</li>
+</ol>
+
+</body>
+</html>

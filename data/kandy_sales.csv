@@ -1,0 +1,101 @@
+transaction_id,txn_date,txn_time,branch,product_id,product_name,category,quantity,unit_price,total_amount,customer_id,payment_method
+T004001,2026-05-01,09:04,Kandy,P027,Mosquito Coils 10 Pack,Household,1,260,260,C01720,Credit Card
+T004002,2026-05-01,11:42,Kandy,P020,Carrots 500g,Fresh Produce,1,220,220,C01667,Mobile Wallet
+T004003,2026-05-01,11:55,Kandy,P018,Big Onions 1kg,Fresh Produce,1,320,320,C01795,Debit Card
+T004004,2026-05-01,12:02,Kandy,P022,Eggs 10 Pack,Fresh Produce,1,420,420,C01564,Mobile Wallet
+T004005,2026-05-01,14:13,Kandy,P003,Mysore Dhal 1kg,Groceries,3,390,1170,C01195,Debit Card
+T004006,2026-05-01,15:27,Kandy,P008,Ceylon Black Tea 400g,Beverages,1,950,950,C01646,Mobile Wallet
+T004007,2026-05-01,15:55,Kandy,P008,Ceylon Black Tea 400g,Beverages,2,950,1900,C01590,Debit Card
+T004008,2026-05-01,16:54,Kandy,P001,Keeri Samba Rice 5kg,Groceries,1,1650,1650,C01637,Cash
+T004009,2026-05-01,17:24,Kandy,P004,White Sugar 1kg,Groceries,1,280,280,C01795,Cash
+T004010,2026-05-01,18:49,Kandy,P020,Carrots 500g,Fresh Produce,2,220,440,C01562,Mobile Wallet
+T004011,2026-05-01,20:00,Kandy,P008,Ceylon Black Tea 400g,Beverages,1,950,950,C01333,Mobile Wallet
+T004012,2026-05-02,08:29,Kandy,P033,LED Bulb 9W,Electronics,3,650,1950,C01548,Debit Card
+T004013,2026-05-02,08:41,Kandy,P011,Mineral Water 1.5L,Beverages,5,140,700,C01573,Debit Card
+T004014,2026-05-02,10:47,Kandy,P005,Wheat Flour 1kg,Groceries,4,220,880,C01599,Cash
+T004015,2026-05-02,13:55,Kandy,P002,Red Raw Rice 5kg,Groceries,1,1150,1150,C01729,Mobile Wallet
+T004016,2026-05-02,15:28,Kandy,P020,Carrots 500g,Fresh Produce,3,220,660,C00092,Mobile Wallet
+T004017,2026-05-02,15:38,Kandy,P014,Fresh Milk 1L,Dairy & Bakery,1,520,520,C01522,Cash
+T004018,2026-05-02,15:42,Kandy,P010,Ginger Beer 1.5L,Beverages,3,450,1350,C01611,Credit Card
+T004019,2026-05-02,17:39,Kandy,P028,Herbal Soap 100g,Personal Care,1,160,160,C01797,Cash
+T004020,2026-05-02,17:54,Kandy,P024,Laundry Powder 1kg,Household,2,690,1380,C01557,Cash
+T004021,2026-05-02,18:09,Kandy,P008,Ceylon Black Tea 400g,Beverages,2,950,1900,C01677,Debit Card
+T004022,2026-05-02,18:40,Kandy,P001,Keeri Samba Rice 5kg,Groceries,3,1650,4950,C01021,Mobile Wallet
+T004023,2026-05-02,19:20,Kandy,P010,Ginger Beer 1.5L,Beverages,2,450,900,C01735,Debit Card
+T004024,2026-05-02,19:34,Kandy,P009,Instant Coffee 100g,Beverages,2,1250,2500,C00467,Cash
+T004025,2026-05-02,20:12,Kandy,P008,Ceylon Black Tea 400g,Beverages,1,950,950,C01546,Cash
+T004026,2026-05-02,21:06,Kandy,P008,Ceylon Black Tea 400g,Beverages,1,950,950,C01775,Mobile Wallet
+T004027,2026-05-02,21:17,Kandy,P010,Ginger Beer 1.5L,Beverages,3,450,1350,C01793,Cash
+T004028,2026-05-02,21:48,Kandy,P003,Mysore Dhal 1kg,Groceries,3,390,1170,C01552,Credit Card
+T004029,2026-05-03,08:03,Kandy,P023,Dishwash Liquid 500ml,Household,1,420,420,C01763,Mobile Wallet
+T004030,2026-05-03,09:49,Kandy,P028,Herbal Soap 100g,Personal Care,4,160,640,C01554,Cash
+T004031,2026-05-03,11:18,Kandy,P015,Buffalo Curd 1kg,Dairy & Bakery,1,650,650,C01649,Mobile Wallet
+T004032,2026-05-03,11:28,Kandy,P019,Potatoes 1kg,Fresh Produce,2,360,720,C01175,Mobile Wallet
+T004033,2026-05-03,11:49,Kandy,P022,Eggs 10 Pack,Fresh Produce,3,420,1260,C01234,Mobile Wallet
+T004034,2026-05-03,12:25,Kandy,P021,Ambul Bananas 1kg,Fresh Produce,1,300,300,C01613,Mobile Wallet
+T004035,2026-05-03,16:53,Kandy,P018,Big Onions 1kg,Fresh Produce,2,320,640,C01770,Debit Card
+T004036,2026-05-03,17:21,Kandy,P002,Red Raw Rice 5kg,Groceries,2,1150,2300,C01708,Credit Card
+T004037,2026-05-03,17:32,Kandy,P016,Cheese Slices 200g,Dairy & Bakery,1,980,980,C01588,Mobile Wallet
+T004038,2026-05-03,17:39,Kandy,P008,Ceylon Black Tea 400g,Beverages,2,950,1900,C01626,Mobile Wallet
+T004039,2026-05-03,19:19,Kandy,P011,Mineral Water 1.5L,Beverages,3,140,420,C01799,Credit Card
+T004040,2026-05-03,19:55,Kandy,P012,Orange Juice 1L,Beverages,2,690,1380,C01694,Mobile Wallet
+T004041,2026-05-03,20:25,Kandy,P013,Sandwich Bread 450g,Dairy & Bakery,1,180,180,C01672,Debit Card
+T004042,2026-05-03,20:33,Kandy,P002,Red Raw Rice 5kg,Groceries,2,1150,2300,C00887,Debit Card
+T004043,2026-05-03,20:37,Kandy,P003,Mysore Dhal 1kg,Groceries,1,390,390,C01533,Debit Card
+T004044,2026-05-03,20:51,Kandy,P017,Butter Cake 500g,Dairy & Bakery,1,850,850,C00330,Debit Card
+T004045,2026-05-04,08:33,Kandy,P015,Buffalo Curd 1kg,Dairy & Bakery,2,650,1300,C01711,Mobile Wallet
+T004046,2026-05-04,08:59,Kandy,P009,Instant Coffee 100g,Beverages,2,1250,2500,C01516,Debit Card
+T004047,2026-05-04,09:22,Kandy,P015,Buffalo Curd 1kg,Dairy & Bakery,2,650,1300,C01517,Debit Card
+T004048,2026-05-04,11:03,Kandy,P020,Carrots 500g,Fresh Produce,2,220,440,C01690,Credit Card
+T004049,2026-05-04,12:29,Kandy,P021,Ambul Bananas 1kg,Fresh Produce,1,300,300,C01515,Mobile Wallet
+T004050,2026-05-04,12:29,Kandy,P023,Dishwash Liquid 500ml,Household,2,420,840,C01710,Mobile Wallet
+T004051,2026-05-04,12:32,Kandy,P026,Toilet Tissue 4 Pack,Household,2,480,960,C01541,Mobile Wallet
+T004052,2026-05-04,12:36,Kandy,P013,Sandwich Bread 450g,Dairy & Bakery,3,180,540,C01557,Credit Card
+T004053,2026-05-04,13:10,Kandy,P029,Toothpaste 120g,Personal Care,1,330,330,C01659,Cash
+T004054,2026-05-04,13:31,Kandy,P008,Ceylon Black Tea 400g,Beverages,3,950,2850,C01621,Cash
+T004055,2026-05-04,16:56,Kandy,P014,Fresh Milk 1L,Dairy & Bakery,2,520,1040,C01517,Debit Card
+T004056,2026-05-04,17:19,Kandy,P011,Mineral Water 1.5L,Beverages,1,140,140,C01593,Cash
+T004057,2026-05-04,17:31,Kandy,P009,Instant Coffee 100g,Beverages,1,1250,1250,C01743,Debit Card
+T004058,2026-05-04,18:23,Kandy,P027,Mosquito Coils 10 Pack,Household,3,260,780,C01688,Credit Card
+T004059,2026-05-04,18:53,Kandy,P024,Laundry Powder 1kg,Household,2,690,1380,C00121,Cash
+T004060,2026-05-04,19:58,Kandy,P033,LED Bulb 9W,Electronics,1,650,650,C00446,Cash
+T004061,2026-05-05,09:18,Kandy,P007,Full Cream Milk Powder 400g,Groceries,3,1150,3450,C01654,Cash
+T004062,2026-05-05,10:59,Kandy,P008,Ceylon Black Tea 400g,Beverages,3,950,2850,C01597,Cash
+T004063,2026-05-05,11:12,Kandy,P002,Red Raw Rice 5kg,Groceries,1,1150,1150,C01567,Mobile Wallet
+T004064,2026-05-05,11:16,Kandy,P005,Wheat Flour 1kg,Groceries,1,220,220,C01742,Mobile Wallet
+T004065,2026-05-05,14:16,Kandy,P038,Phone Charger 20W,Electronics,1,4200,4200,C01777,Debit Card
+T004066,2026-05-05,14:43,Kandy,P032,Coconut Hair Oil 200ml,Personal Care,2,450,900,C01598,Mobile Wallet
+T004067,2026-05-05,16:52,Kandy,P017,Butter Cake 500g,Dairy & Bakery,1,850,850,C01650,Credit Card
+T004068,2026-05-05,17:12,Kandy,P006,Coconut Oil 1L,Groceries,3,780,2340,C01606,Mobile Wallet
+T004069,2026-05-05,17:38,Kandy,P008,Ceylon Black Tea 400g,Beverages,1,950,950,C01789,Cash
+T004070,2026-05-05,19:32,Kandy,P009,Instant Coffee 100g,Beverages,2,1250,2500,C01539,Mobile Wallet
+T004071,2026-05-05,20:06,Kandy,P004,White Sugar 1kg,Groceries,2,280,560,C01550,Cash
+T004072,2026-05-05,20:35,Kandy,P010,Ginger Beer 1.5L,Beverages,1,450,450,C01665,Mobile Wallet
+T004073,2026-05-05,21:59,Kandy,P005,Wheat Flour 1kg,Groceries,1,220,220,C01661,Cash
+T004074,2026-05-06,09:17,Kandy,P019,Potatoes 1kg,Fresh Produce,1,360,360,C01536,Debit Card
+T004075,2026-05-06,10:14,Kandy,P004,White Sugar 1kg,Groceries,4,280,1120,C01793,Credit Card
+T004076,2026-05-06,11:47,Kandy,P018,Big Onions 1kg,Fresh Produce,1,320,320,C01784,Debit Card
+T004077,2026-05-06,13:20,Kandy,P001,Keeri Samba Rice 5kg,Groceries,2,1650,3300,C01798,Debit Card
+T004078,2026-05-06,13:33,Kandy,P006,Coconut Oil 1L,Groceries,1,780,780,C01529,Mobile Wallet
+T004079,2026-05-06,14:16,Kandy,P015,Buffalo Curd 1kg,Dairy & Bakery,1,650,650,C01594,Mobile Wallet
+T004080,2026-05-06,14:21,Kandy,P017,Butter Cake 500g,Dairy & Bakery,1,850,850,C01700,Mobile Wallet
+T004081,2026-05-06,18:16,Kandy,P013,Sandwich Bread 450g,Dairy & Bakery,1,180,180,C01504,Credit Card
+T004082,2026-05-06,19:06,Kandy,P016,Cheese Slices 200g,Dairy & Bakery,1,980,980,C01617,Debit Card
+T004083,2026-05-06,19:15,Kandy,P008,Ceylon Black Tea 400g,Beverages,1,950,950,C01596,Cash
+T004084,2026-05-06,19:29,Kandy,P016,Cheese Slices 200g,Dairy & Bakery,2,980,1960,C01676,Cash
+T004085,2026-05-07,08:21,Kandy,P003,Mysore Dhal 1kg,Groceries,4,390,1560,C01607,Cash
+T004086,2026-05-07,11:41,Kandy,P019,Potatoes 1kg,Fresh Produce,1,360,360,C01522,Cash
+T004087,2026-05-07,12:21,Kandy,P001,Keeri Samba Rice 5kg,Groceries,3,1650,4950,C00289,Debit Card
+T004088,2026-05-07,12:34,Kandy,P025,Floor Cleaner 1L,Household,1,560,560,C01731,Debit Card
+T004089,2026-05-07,15:26,Kandy,P013,Sandwich Bread 450g,Dairy & Bakery,3,180,540,C01739,Debit Card
+T004090,2026-05-07,15:31,Kandy,P032,Coconut Hair Oil 200ml,Personal Care,1,450,450,C01592,Debit Card
+T004091,2026-05-07,17:12,Kandy,P023,Dishwash Liquid 500ml,Household,1,420,420,C01778,Mobile Wallet
+T004092,2026-05-07,17:16,Kandy,P009,Instant Coffee 100g,Beverages,1,1250,1250,C01537,Mobile Wallet
+T004093,2026-05-07,18:28,Kandy,P005,Wheat Flour 1kg,Groceries,1,220,220,C01692,Debit Card
+T004094,2026-05-07,19:17,Kandy,P034,Extension Cord 4 Way,Electronics,1,3200,3200,C01725,Cash
+T004095,2026-05-07,19:24,Kandy,P004,White Sugar 1kg,Groceries,3,280,840,C01637,Credit Card
+T004096,2026-05-07,19:24,Kandy,P020,Carrots 500g,Fresh Produce,1,220,220,C01046,Cash
+T004097,2026-05-07,19:43,Kandy,P008,Ceylon Black Tea 400g,Beverages,1,950,950,C01662,Debit Card
+T004098,2026-05-07,20:52,Kandy,P032,Coconut Hair Oil 200ml,Personal Care,1,450,450,C01735,Credit Card
+T004099,2026-05-07,21:11,Kandy,P023,Dishwash Liquid 500ml,Household,2,420,840,C00659,Cash
+T004100,2026-05-07,21:12,Kandy,P024,Laundry Powder 1kg,Household,2,690,1380,C01605,Debit Card
