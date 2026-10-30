@@ -1,0 +1,94 @@
+# Hadoop cluster for the Retail Analytics lab.
+# Same images as the module's lab1 compose (Hadoop 3.2.1, Java 8):
+#   1 NameNode + 2 DataNodes + ResourceManager + 1 NodeManager
+# The whole project folder is shared into the namenode as /opt/retail
+#
+# Start:  docker compose -f docker/docker-compose-hadoop.yaml up -d
+# Stop:   docker compose -f docker/docker-compose-hadoop.yaml down
+name: retail-hadoop
+
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    restart: unless-stopped
+    ports:
+      - "9870:9870"   # NameNode web UI  -> http://localhost:9870
+      - "9000:9000"   # HDFS file system
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+      - ..:/opt/retail          # project folder (data, jar, results)
+    environment:
+      - CLUSTER_NAME=retail
+    env_file:
+      - ./hadoop.env
+    networks:
+      - hadoop
+
+  datanode1:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode1
+    restart: unless-stopped
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+    networks:
+      - hadoop
+
+  datanode2:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode2
+    restart: unless-stopped
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+    networks:
+      - hadoop
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    container_name: resourcemanager
+    restart: unless-stopped
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    ports:
+      - "8088:8088"   # YARN web UI -> http://localhost:8088
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode1:9864 datanode2:9864"
+    env_file:
+      - ./hadoop.env
+    networks:
+      - hadoop
+
+  nodemanager1:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    container_name: nodemanager1
+    restart: unless-stopped
+    depends_on:
+      - resourcemanager
+    environment:
+      SERVICE_PRECONDITION: "resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    networks:
+      - hadoop
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode1:
+  hadoop_datanode2:
+
+networks:
+  hadoop:

@@ -1,0 +1,31 @@
+# Single-node Cassandra for the Retail Analytics lab (same image as the module's lab2).
+# The project folder is shared into the container as /opt/retail so cqlsh COPY can read CSV files.
+#
+# Start:  docker compose -f docker/docker-compose-cassandra.yaml up -d
+# Stop:   docker compose -f docker/docker-compose-cassandra.yaml down
+name: retail-cassandra
+
+services:
+  cassandra:
+    image: cassandra:4.0.12
+    container_name: cassandra
+    hostname: cassandra
+    restart: unless-stopped
+    ports:
+      - "9042:9042"   # CQL port used by cqlsh and the Python dashboard
+    environment:
+      - CASSANDRA_CLUSTER_NAME=RetailCluster
+      # small memory footprint so it fits on a laptop next to Hadoop
+      - MAX_HEAP_SIZE=1G
+      - HEAP_NEWSIZE=200M
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+      - ..:/opt/retail
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'DESCRIBE KEYSPACES' || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+
+volumes:
+  cassandra_data:
